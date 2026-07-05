@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KaiGraph Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>KaiGraph Studio</h1>
+
+    <div class="container">
+
+
+
+        </section>
+
+        <!-- 横軸 -->
+        <section class="box">
+            <h2>横軸</h2>
+
+            <label>長さ (mm)</label>
+            <input type="number" id="xlen" value="100">
+
+
+        </section>
+
+        <!-- 縦軸 -->
+        <section class="box">
+            <h2>縦軸</h2>
+
+            <label>長さ (mm)</label>
+            <input type="number" id="ylen" value="80">
+
+
+        </section>
+
+        <!-- 小目盛 -->
+        <section class="box">
+            <h2>小目盛</h2>
+
+            <label>間隔 (mm)</label>
+            <input type="number" id="small" value="1">
+
+            <label>色</label>
+            <input type="color" id="smallColor" value="#87ceeb">
+
+            <label>線種</label>
+            <select id="smallStyle">
+                <option value="solid">実線</option>
+                <option value="dashed">破線</option>
+                <option value="dotted">点線</option>
+            </select>
+
+            <label>線の太さ</label>
+            <input type="number" id="smallWidth" value="0.50" step="0.01">
+        </section>
+
+        <!-- 中目盛 -->
+        <section class="box">
+            <h2>中目盛</h2>
+
+            <label>間隔 (mm)</label>
+            <input type="number" id="mid" value="5">
+
+            <label>色</label>
+            <input type="color" id="midColor" value="#87ceeb">
+
+            <label>線種</label>
+            <select id="midStyle">
+                <option value="solid">実線</option>
+                <option value="dashed">破線</option>
+                <option value="dotted">点線</option>
+            </select>
+
+            <label>線の太さ</label>
+            <input type="number" id="midWidth" value="0.8" step="0.01">
+        </section>
+
+        <!-- 大目盛 -->
+        <section class="box">
+            <h2>大目盛</h2>
+
+            <label>間隔 (mm)</label>
+            <input type="number" id="big" value="10">
+
+            <label>色</label>
+            <input type="color" id="bigColor" value="#000000">
+
+            <label>線種</label>
+            <select id="bigStyle">
+                <option value="solid">実線</option>
+                <option value="dashed">破線</option>
+                <option value="dotted">点線</option>
+            </select>
+
+            <label>線の太さ</label>
+            <input type="number" id="bigWidth" value="1" step="0.1">
+        </section>
+
+    </div>
+
+    <!-- プレビュー -->
+    <h2>プレビュー</h2>
+    <div id="preview"></div>
+
+    <button id="create">作成</button>
+
+    <!-- PNG出力（通常） -->
+    <button id="exportPng">PNG出力</button>
+
+    <!-- PNG出力（高画質） -->
+    <button id="exportPngHigh">高画質PNG出力</button>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
