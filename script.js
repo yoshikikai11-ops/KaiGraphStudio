@@ -169,10 +169,26 @@ function exportPNG(renderScale, filename) {
 
         const pngUrl = canvas.toDataURL("image/png");
 
-        const a = document.createElement("a");
-        a.href = pngUrl;
-        a.download = filename;
-        a.click();
+        // スマホ判定
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // スマホは画像を画面に表示 → 長押し保存できる
+            const imgElement = document.createElement("img");
+            imgElement.src = pngUrl;
+            imgElement.style.width = "100%";
+            imgElement.style.marginTop = "20px";
+            document.body.appendChild(imgElement);
+
+            alert("画像を長押しして保存できます！");
+        } else {
+            // PCは従来通りダウンロード
+            const a = document.createElement("a");
+            a.href = pngUrl;
+            a.download = filename;
+            a.click();
+        }
+
 
         URL.revokeObjectURL(url);
     };
