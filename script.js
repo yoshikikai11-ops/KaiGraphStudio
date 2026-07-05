@@ -116,6 +116,7 @@ document.getElementById("create").addEventListener("click", () => {
 // PNG出力（通常：renderScale=10）
 // ===============================
 document.getElementById("exportPng").addEventListener("click", () => {
+
     exportPNG(10, "graph.png");
 });
 
@@ -124,12 +125,13 @@ document.getElementById("exportPng").addEventListener("click", () => {
 // PNG出力（高画質：renderScale=25）
 // ===============================
 document.getElementById("exportPngHigh").addEventListener("click", () => {
-    exportPNG(25, "graph_high_quality.png");
+
+    exportPNG(20, "graph_high_quality.png");
 });
 
 
 // ===============================
-// 共通PNG生成関数（スマホ完全対応版）
+// 共通PNG生成関数
 // ===============================
 function exportPNG(renderScale, filename) {
 
@@ -138,14 +140,6 @@ function exportPNG(renderScale, filename) {
     if (!svgElement) {
         alert("先に作成ボタンを押してね");
         return;
-    }
-
-    // ★スマホ判定
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    // ★スマホは高解像度が絶対に処理できないので renderScale を下げる
-    if (isMobile) {
-        renderScale = 3;
     }
 
     const serializer = new XMLSerializer();
@@ -175,22 +169,10 @@ function exportPNG(renderScale, filename) {
 
         const pngUrl = canvas.toDataURL("image/png");
 
-        // ★スマホは画像を画面に表示して長押し保存
-        if (isMobile) {
-            const imgElement = document.createElement("img");
-            imgElement.src = pngUrl;
-            imgElement.style.width = "100%";
-            imgElement.style.marginTop = "20px";
-            document.body.appendChild(imgElement);
-
-            alert("画像を長押しして保存できます！");
-        } else {
-            // PCは従来通りダウンロード
-            const a = document.createElement("a");
-            a.href = pngUrl;
-            a.download = filename;
-            a.click();
-        }
+        const a = document.createElement("a");
+        a.href = pngUrl;
+        a.download = filename;
+        a.click();
 
         URL.revokeObjectURL(url);
     };
